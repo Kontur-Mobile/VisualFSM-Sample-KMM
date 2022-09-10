@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("com.google.devtools.ksp") version "1.7.10-1.0.6"
 }
 
 kotlin {
@@ -17,7 +18,14 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+                implementation("ru.kontur.mobile.visualfsm:visualfsm-core:1.1.1")
+
+                kotlin.srcDir("${buildDir.absolutePath}/generated/ksp/")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
@@ -44,6 +52,10 @@ kotlin {
             iosSimulatorArm64Test.dependsOn(this)
         }
     }
+}
+
+dependencies {
+    add("kspAndroid", "ru.kontur.mobile.visualfsm:visualfsm-compiler:1.1.1")
 }
 
 android {
