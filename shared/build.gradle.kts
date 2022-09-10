@@ -4,6 +4,13 @@ plugins {
     id("com.google.devtools.ksp") version DV.ksp
 }
 
+// Use new memory model
+kotlin.targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget::class.java) {
+    binaries.all {
+        binaryOptions["memoryModel"] = "experimental"
+    }
+}
+
 kotlin {
     android()
     
