@@ -21,17 +21,17 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.0"
+        kotlinCompilerExtensionVersion = DV.composeCompiler
     }
 }
 
 dependencies {
     implementation(project(":shared"))
-    implementation("ru.kontur.mobile.visualfsm:visualfsm-core:1.1.1")
+    implementation("ru.kontur.mobile.visualfsm:visualfsm-core:${DV.visualfsm}")
 
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.compose.ui:ui:1.2.1")
-    implementation("androidx.compose.material:material:1.2.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.2.1")
-    implementation("androidx.activity:activity-compose:1.5.1")
+    implementation("androidx.core:core-ktx:${DV.coreKTX}")
+    implementation("androidx.compose.ui:ui:${DV.compose}")
+    implementation("androidx.compose.material:material:${DV.compose}")
+    implementation("androidx.compose.ui:ui-tooling-preview:${DV.compose}")
+    implementation("androidx.activity:activity-compose:${DV.activityCompose}")
 }
