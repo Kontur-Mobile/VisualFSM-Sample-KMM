@@ -34,4 +34,7 @@ dependencies {
     implementation("androidx.compose.material:material:${DV.compose}")
     implementation("androidx.compose.ui:ui-tooling-preview:${DV.compose}")
     implementation("androidx.activity:activity-compose:${DV.activityCompose}")
+
+    testImplementation("junit:junit:${DV.junit}")
+    testImplementation("ru.kontur.mobile.visualfsm:visualfsm-tools:${DV.visualfsm}")
 }
