@@ -3,7 +3,7 @@ import SwiftUI
 struct UserAuthorizedView: View {
     @EnvironmentObject var authFeature: ObservableAuthFeature
 
-    @State private var email = ""
+    private var email = ""
 
     init(email: String) {
         self.email = email
@@ -11,15 +11,16 @@ struct UserAuthorizedView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 32) {
-                Text("Hello, World!")
+            VStack(spacing: 16) {
+                Text("Welcome!")
                     .font(.title)
-                    .padding(.top, 100)
+                    .padding(.top, 128)
+                Text(email)
                 Button("Log out") {
                     withAnimation {
                         authFeature.logout()
                     }
-                }
+                }.padding(.top, 32)
             }
         }
     }

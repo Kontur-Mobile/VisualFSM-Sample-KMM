@@ -13,6 +13,7 @@ struct RegistrationView: View {
     init(email: String, password: String, repeatedPassword: String, error: String?, loading: Bool, showConfirmation: Bool) {
         self.email = email
         self.password = password
+        self.repeatPassword = repeatedPassword
         self.error = error
         self.loading = loading
         self._showConfirmation = State(initialValue: showConfirmation)
@@ -28,9 +29,9 @@ struct RegistrationView: View {
                         .font(.title2)
 
                     VStack(spacing: 40) {
-                        CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
-                        CustomInputField(imageName: "lock", placeholderText: "Password", text: $password)
-                        CustomInputField(imageName: "lock", placeholderText: "Repeat password", text: $repeatPassword)
+                        CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email, secured: false)
+                        CustomInputField(imageName: "lock", placeholderText: "Password", text: $password, secured: true)
+                        CustomInputField(imageName: "lock", placeholderText: "Repeat password", text: $repeatPassword, secured: true)
                         if let error = error {
                             Text(error)
                                 .foregroundColor(.red)

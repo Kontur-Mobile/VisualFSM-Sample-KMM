@@ -24,8 +24,8 @@ struct AuthView: View {
                         .font(.title2)
                     
                     VStack(spacing: 40) {
-                        CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
-                        CustomInputField(imageName: "lock", placeholderText: "Password", text: $password)
+                        CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email, secured: false)
+                        CustomInputField(imageName: "lock", placeholderText: "Password", text: $password, secured: true)
                         if let error = error {
                             Text(error)
                                 .foregroundColor(.red)
