@@ -4,13 +4,6 @@ plugins {
     id("com.google.devtools.ksp") version DV.ksp
 }
 
-// Use new memory model
-kotlin.targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget::class.java) {
-    binaries.all {
-        binaryOptions["memoryModel"] = "experimental"
-    }
-}
-
 kotlin {
     android()
     
@@ -66,10 +59,11 @@ dependencies {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = 33
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 23
-        targetSdk = 32
+        targetSdk = 33
     }
+    namespace = "ru.kontur.mobile.visualfsm.sample_kmm"
 }
