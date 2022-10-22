@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = 33
     defaultConfig {
         applicationId = "ru.kontur.mobile.visualfsm.sample_kmm.android"
         minSdk = 23
-        targetSdk = 32
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }
@@ -23,6 +23,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = DV.composeCompiler
     }
+    namespace = "ru.kontur.mobile.visualfsm.sample_kmm.android"
 }
 
 dependencies {
