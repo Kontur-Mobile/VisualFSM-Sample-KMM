@@ -4,6 +4,14 @@ plugins {
     id("com.google.devtools.ksp") version DV.ksp
 }
 
+// ===============
+// https://github.com/google/ksp/issues/567
+// https://github.com/google/ksp/issues/965
+dependencies {
+    add("kspCommonMainMetadata", "ru.kontur.mobile.visualfsm:visualfsm-compiler:${DV.visualfsm}")
+}
+// ===============
+
 kotlin {
     android()
     
@@ -22,8 +30,12 @@ kotlin {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${DV.coroutines}")
                 implementation("ru.kontur.mobile.visualfsm:visualfsm-core:${DV.visualfsm}")
+                implementation("org.jetbrains.kotlinx:atomicfu:${DV.atomicfu}")
 
-                kotlin.srcDir("${buildDir.absolutePath}/generated/ksp/")
+                // ===============
+                // https://github.com/google/ksp/issues/567
+                // https://github.com/google/ksp/issues/965
+                kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
             }
         }
         val commonTest by getting {
@@ -54,9 +66,15 @@ kotlin {
     }
 }
 
-dependencies {
-    add("kspAndroid", "ru.kontur.mobile.visualfsm:visualfsm-compiler:${DV.visualfsm}")
+// ===============
+// https://github.com/google/ksp/issues/567
+// https://github.com/google/ksp/issues/965
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
+    if (name != "kspCommonMainKotlinMetadata") {
+        dependsOn("kspCommonMainKotlinMetadata")
+    }
 }
+// ===============
 
 android {
     compileSdk = 33
