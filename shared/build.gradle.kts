@@ -81,7 +81,6 @@ android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 23
-        targetSdk = 33
     }
     namespace = "ru.kontur.mobile.visualfsm.sample_kmm"
 }
